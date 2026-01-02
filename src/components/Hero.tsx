@@ -23,9 +23,9 @@ export function Hero() {
       {/* Hero Content */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-12 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
           className="mb-8"
         >
           <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-[10px] font-bold tracking-[0.3em] uppercase text-[#D4AF37] leading-none">
