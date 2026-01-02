@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -17,17 +17,14 @@ import {
     Mail,
     Phone,
     MapPin,
-    Upload,
     Loader2,
     Menu
 } from 'lucide-react';
 import { Blog, GolfCartModel as Product, Inquiry } from '../types';
 
 const API_URL = '/api';
-const BASE_URL = '';
 
 export function Admin() {
-    const fileInputRef = useRef<HTMLInputElement>(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string>('');
