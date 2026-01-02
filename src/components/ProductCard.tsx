@@ -52,9 +52,6 @@ export function ProductCard({
                     <h3 className="font-display text-3xl font-medium tracking-tight text-[#14211A]">
                         {model.name}
                     </h3>
-                    <p className="text-[10px] font-bold tracking-widest text-[#D4AF37] uppercase mt-1">
-                        LIMITED EDITION
-                    </p>
                 </div>
 
                 <p className="text-sm text-[#14211A]/60 font-light mb-8 line-clamp-2">
