@@ -799,7 +799,7 @@ export function Admin() {
                         </p>
                     </div>
                 )}
-        </div>
+            </main>
         </div >
     );
 }
