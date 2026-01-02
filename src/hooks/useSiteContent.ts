@@ -75,7 +75,7 @@ export interface SiteContent {
 
 const defaultContent: SiteContent = {
     heroTitle: 'Redefining',
-    heroTitleHighlight: 'Prestige',
+    heroTitleHighlight: 'Luxury',
     heroSubtitle: "Experience the pinnacle of electric mobility. Handcrafted brilliance meets sustainable innovation for India's most exclusive destinations.",
     heroCta1: 'EXPLORE THE FLEET',
     heroCta2: 'REQUEST PRIVATE CONSULTATION',

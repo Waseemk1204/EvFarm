@@ -8,7 +8,6 @@ import { QuoteForm } from '../components/QuoteForm';
 import { Layout } from '../components/Layout';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { SEO } from '../components/SEO';
-import { LoadingSpinner } from '../components/LoadingSpinner';
 import {
     ShieldCheckIcon,
     LeafIcon,
@@ -106,7 +105,7 @@ export function Home() {
     const [products, setProducts] = useState<GolfCartModel[]>([]);
     const [selectedModel, setSelectedModel] = useState<GolfCartModel | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const { content, loading } = useSiteContent();
+    const { content } = useSiteContent();
 
     useEffect(() => {
         fetch('/api/products/featured')
@@ -139,11 +138,6 @@ export function Home() {
         { icon: <HotelIcon className="w-8 h-8" />, label: content.useCase3 },
         { icon: <GraduationCapIcon className="w-8 h-8" />, label: content.useCase4 }
     ];
-
-    // Show loading spinner while content loads
-    if (loading) {
-        return <LoadingSpinner fullScreen message="Loading EVFARM" />;
-    }
 
     return (
         <Layout>

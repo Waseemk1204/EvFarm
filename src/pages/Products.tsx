@@ -8,7 +8,7 @@ import { ProductModal } from '../components/ProductModal';
 import { GolfCartModel } from '../types';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { SEO } from '../components/SEO';
-import { LoadingSpinner } from '../components/LoadingSpinner';
+import { SEO } from '../components/SEO';
 
 export function Products() {
     const { content } = useSiteContent();
@@ -88,7 +88,10 @@ export function Products() {
             <section className="section-padding bg-[#F8F9F8]">
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     {loading ? (
-                        <LoadingSpinner message="Loading products" />
+                        <div className="text-center py-20">
+                            <div className="w-8 h-8 border-2 border-[#D4AF37] border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+                            <p className="text-[#14211A]/40">Loading products...</p>
+                        </div>
                     ) : products.length === 0 ? (
                         <div className="text-center py-20">
                             <p className="text-[#14211A]/40 text-lg">No products available yet.</p>
