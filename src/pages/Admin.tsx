@@ -959,7 +959,16 @@ export function Admin() {
                                             <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Product Image</label>
                                             <div className="flex items-center gap-4">
                                                 {formData.image && (
-                                                    <img src={formData.image} alt="Preview" className="w-16 h-16 object-cover rounded-sm bg-[#F8F9F8]" />
+                                                    <div className="relative group">
+                                                        <img src={formData.image} alt="Preview" className="w-16 h-16 object-contain rounded-sm bg-[#F8F9F8] border border-[#14211A]/5" />
+                                                        <button
+                                                            onClick={() => setFormData({ ...formData, image: '' })}
+                                                            className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-red-600"
+                                                            title="Remove Image"
+                                                        >
+                                                            <X className="w-3 h-3" />
+                                                        </button>
+                                                    </div>
                                                 )}
                                                 <label className="flex-1 cursor-pointer">
                                                     <input
