@@ -955,7 +955,9 @@ export function Admin() {
 
                                         <div>
                                             <div className="flex justify-between items-center mb-3">
-                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40">Product Image</label>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40">
+                                                    Product Image <span className="text-[#14211A]/20 normal-case tracking-normal ml-1">(Recommended: 800x800px)</span>
+                                                </label>
                                                 <select
                                                     value={formData.imageFit || 'contain'}
                                                     onChange={(e) => setFormData({ ...formData, imageFit: e.target.value })}
