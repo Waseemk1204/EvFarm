@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const inquirySchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -14,4 +14,4 @@ const inquirySchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-module.exports = mongoose.models.Inquiry || mongoose.model('Inquiry', inquirySchema);
+export default mongoose.models.Inquiry || mongoose.model('Inquiry', inquirySchema);

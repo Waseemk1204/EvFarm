@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const blogSchema = new mongoose.Schema({
     title: { type: String, required: true },
@@ -7,4 +7,4 @@ const blogSchema = new mongoose.Schema({
     isPublished: { type: Boolean, default: false }
 }, { timestamps: true });
 
-module.exports = mongoose.models.Blog || mongoose.model('Blog', blogSchema);
+export default mongoose.models.Blog || mongoose.model('Blog', blogSchema);

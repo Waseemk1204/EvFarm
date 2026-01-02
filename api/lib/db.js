@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 let cached = global.mongoose;
 
@@ -14,7 +14,7 @@ async function connectDB() {
     if (!cached.promise) {
         const opts = {
             bufferCommands: false,
-            family: 4, // Force IPv4
+            family: 4,
         };
 
         cached.promise = mongoose.connect(process.env.MONGODB_URI, opts).then((mongoose) => {
@@ -26,4 +26,4 @@ async function connectDB() {
     return cached.conn;
 }
 
-module.exports = connectDB;
+export default connectDB;

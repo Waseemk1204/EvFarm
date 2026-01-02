@@ -1,11 +1,9 @@
-const connectDB = require('./lib/db');
-
-// Import models
-const Product = require('./lib/models/Product');
-const Blog = require('./lib/models/Blog');
-const Inquiry = require('./lib/models/Inquiry');
-const AdminSettings = require('./lib/models/AdminSettings');
-const SiteContent = require('./lib/models/SiteContent');
+import connectDB from './lib/db.js';
+import Product from './lib/models/Product.js';
+import Blog from './lib/models/Blog.js';
+import Inquiry from './lib/models/Inquiry.js';
+import AdminSettings from './lib/models/AdminSettings.js';
+import SiteContent from './lib/models/SiteContent.js';
 
 // Rate limiting for admin login
 const loginAttempts = new Map();
@@ -41,7 +39,7 @@ function clearAttempts(ip) {
     loginAttempts.delete(ip);
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
     // Enable CORS
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     res.setHeader('Access-Control-Allow-Origin', '*');

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const adminSettingsSchema = new mongoose.Schema({
     key: { type: String, required: true, unique: true },
@@ -6,11 +6,9 @@ const adminSettingsSchema = new mongoose.Schema({
     recoveryKey: { type: String, required: true }
 }, { timestamps: true });
 
-// Singleton pattern - always use key 'admin'
 adminSettingsSchema.statics.getSettings = async function () {
     let settings = await this.findOne({ key: 'admin' });
     if (!settings) {
-        // Create default settings from env on first run
         settings = await this.create({
             key: 'admin',
             password: process.env.ADMIN_PASSWORD || 'admin123',
@@ -28,4 +26,4 @@ adminSettingsSchema.statics.updatePassword = async function (newPassword) {
     );
 };
 
-module.exports = mongoose.models.AdminSettings || mongoose.model('AdminSettings', adminSettingsSchema);
+export default mongoose.models.AdminSettings || mongoose.model('AdminSettings', adminSettingsSchema);
