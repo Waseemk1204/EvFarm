@@ -954,11 +954,25 @@ export function Admin() {
                                         </div>
 
                                         <div>
-                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Product Image</label>
+                                            <div className="flex justify-between items-center mb-3">
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40">Product Image</label>
+                                                <select
+                                                    value={formData.imageFit || 'contain'}
+                                                    onChange={(e) => setFormData({ ...formData, imageFit: e.target.value })}
+                                                    className="text-[10px] uppercase font-bold text-[#14211A]/60 bg-transparent border-none focus:ring-0 cursor-pointer hover:text-[#D4AF37] transition-colors"
+                                                >
+                                                    <option value="contain">Fit to Size</option>
+                                                    <option value="cover">Fill Area</option>
+                                                </select>
+                                            </div>
                                             <div className="flex items-center gap-4">
                                                 {formData.image && (
                                                     <div className="relative group">
-                                                        <img src={formData.image} alt="Preview" className="w-16 h-16 object-contain rounded-sm bg-[#F8F9F8] border border-[#14211A]/5" />
+                                                        <img
+                                                            src={formData.image}
+                                                            alt="Preview"
+                                                            className={`w-16 h-16 rounded-sm bg-[#F8F9F8] border border-[#14211A]/5 ${formData.imageFit === 'cover' ? 'object-cover' : 'object-contain'}`}
+                                                        />
                                                         <button
                                                             onClick={() => setFormData({ ...formData, image: '' })}
                                                             className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm hover:bg-red-600"

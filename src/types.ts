@@ -14,6 +14,7 @@ export interface GolfCartModel {
     seating: number;
     tagline: string;
     image: string;
+    imageFit?: 'contain' | 'cover';
     range: string;
     battery: string;
     power: string;
