@@ -251,33 +251,27 @@ export function Admin() {
         setIsEditing(true);
     };
 
-    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, fieldName: string = 'image') => {
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string = 'image') => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        setUploading(true);
-        const uploadData = new FormData();
-        uploadData.append('image', file);
-
-        try {
-            const response = await fetch(`${API_URL}/upload`, {
-                method: 'POST',
-                body: uploadData,
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                const imageUrl = `${BASE_URL}${data.url}`;
-                setFormData({ ...formData, [fieldName]: imageUrl });
-            } else {
-                showToast('Upload failed', 'error');
-            }
-        } catch (err) {
-            console.error('Upload error:', err);
-            showToast('Upload error', 'error');
-        } finally {
-            setUploading(false);
+        // Check file size (limit to 2MB for database storage)
+        if (file.size > 2 * 1024 * 1024) {
+            showToast('Image too large. Please use an image under 2MB.', 'error');
+            return;
         }
+
+        setUploading(true);
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setFormData({ ...formData, [fieldName]: reader.result as string });
+            setUploading(false);
+        };
+        reader.onerror = () => {
+            showToast('Failed to process image', 'error');
+            setUploading(false);
+        };
+        reader.readAsDataURL(file);
     };
 
     const handleSave = async () => {
