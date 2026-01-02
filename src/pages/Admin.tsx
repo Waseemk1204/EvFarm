@@ -800,6 +800,283 @@ export function Admin() {
                     </div>
                 )}
             </main>
+
+            {/* Toast Notification */}
+            <AnimatePresence>
+                {toast.show && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className={`fixed top-4 right-4 p-4 rounded-sm text-white text-sm font-bold flex items-center gap-3 shadow-lg z-[100] ${toast.type === 'success' ? 'bg-[#14211A]' : 'bg-red-500'}`}
+                    >
+                        {toast.type === 'success' ? <Save className="w-4 h-4 text-[#D4AF37]" /> : <X className="w-4 h-4" />}
+                        {toast.message}
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* Confirm Modal */}
+            <AnimatePresence>
+                {confirmModal.show && (
+                    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setConfirmModal({ ...confirmModal, show: false })}
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            className="bg-white p-8 rounded-sm shadow-xl w-full max-w-sm relative z-10"
+                        >
+                            <h3 className="font-display text-xl font-bold text-[#14211A] mb-2">{confirmModal.title}</h3>
+                            <p className="text-[#14211A]/60 text-sm mb-6 leading-relaxed">{confirmModal.message}</p>
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={() => setConfirmModal({ ...confirmModal, show: false })}
+                                    className="flex-1 px-4 py-3 border border-[#14211A]/10 text-[#14211A] font-bold text-xs tracking-wider uppercase rounded-sm hover:bg-[#F8F9F8] transition-all"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={() => { confirmModal.onConfirm(); setConfirmModal({ ...confirmModal, show: false }); }}
+                                    className="flex-1 px-4 py-3 bg-red-500 text-white font-bold text-xs tracking-wider uppercase rounded-sm hover:bg-red-600 transition-all shadow-lg"
+                                >
+                                    Confirm
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+
+            {/* Edit/Add Modal */}
+            <AnimatePresence>
+                {isEditing && (
+                    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsEditing(false)}
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        />
+                        <motion.div
+                            initial={{ opacity: 0, y: 100 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 100 }}
+                            className="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-sm shadow-2xl relative z-10 flex flex-col"
+                        >
+                            <div className="p-6 border-b border-[#14211A]/5 flex justify-between items-center sticky top-0 bg-white z-20">
+                                <h3 className="font-display text-xl font-bold text-[#14211A]">
+                                    {formData._id ? 'Edit' : 'Add'} {editType === 'blog' ? 'Blog' : 'Product'}
+                                </h3>
+                                <button
+                                    onClick={() => setIsEditing(false)}
+                                    className="p-2 hover:bg-[#F8F9F8] rounded-full transition-colors"
+                                >
+                                    <X className="w-5 h-5 text-[#14211A]/40" />
+                                </button>
+                            </div>
+
+                            <div className="p-6 space-y-6">
+                                {editType === 'blog' ? (
+                                    <>
+                                        <div>
+                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Title</label>
+                                            <input
+                                                type="text"
+                                                value={formData.title || ''}
+                                                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                                className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Author</label>
+                                            <input
+                                                type="text"
+                                                value={formData.author || ''}
+                                                onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                                                className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Content</label>
+                                            <textarea
+                                                rows={10}
+                                                value={formData.content || ''}
+                                                onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                                                className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                            />
+                                        </div>
+                                    </>
+                                ) : (
+                                    <>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Name</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.name || ''}
+                                                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Tagline</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.tagline || ''}
+                                                    onChange={(e) => setFormData({ ...formData, tagline: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Product Image</label>
+                                            <div className="flex items-center gap-4">
+                                                {formData.image && (
+                                                    <img src={formData.image} alt="Preview" className="w-16 h-16 object-cover rounded-sm bg-[#F8F9F8]" />
+                                                )}
+                                                <label className="flex-1 cursor-pointer">
+                                                    <input
+                                                        type="file"
+                                                        onChange={(e) => handleImageUpload(e, 'image')}
+                                                        className="hidden"
+                                                    />
+                                                    <div className="w-full px-4 py-3 bg-[#F8F9F8] border border-dashed border-[#14211A]/20 rounded-sm text-[#14211A]/40 text-sm text-center hover:bg-[#14211A]/5 transition-colors">
+                                                        {uploading ? (
+                                                            <span className="flex items-center justify-center gap-2">
+                                                                <Loader2 className="w-4 h-4 animate-spin" /> Uploading...
+                                                            </span>
+                                                        ) : (
+                                                            'Click to upload image'
+                                                        )}
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Seating</label>
+                                                <input
+                                                    type="number"
+                                                    value={formData.seating || 2}
+                                                    onChange={(e) => setFormData({ ...formData, seating: parseInt(e.target.value) })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Speed</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.speed || ''}
+                                                    onChange={(e) => setFormData({ ...formData, speed: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Range</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.range || ''}
+                                                    onChange={(e) => setFormData({ ...formData, range: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Charging</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.chargingTime || ''}
+                                                    onChange={(e) => setFormData({ ...formData, chargingTime: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Battery Type</label>
+                                                <select
+                                                    value={formData.batteryType || 'Lithium-ion'}
+                                                    onChange={(e) => setFormData({ ...formData, batteryType: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                >
+                                                    <option value="Lithium-ion">Lithium-ion</option>
+                                                    <option value="Lead-acid">Lead-acid</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Battery Capacity</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.batteryCapacity || ''}
+                                                    onChange={(e) => setFormData({ ...formData, batteryCapacity: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Motor Power</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.motorPower || ''}
+                                                    onChange={(e) => setFormData({ ...formData, motorPower: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Ground Clearance</label>
+                                                <input
+                                                    type="text"
+                                                    value={formData.groundClearance || ''}
+                                                    onChange={(e) => setFormData({ ...formData, groundClearance: e.target.value })}
+                                                    className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Dimensions</label>
+                                            <input
+                                                type="text"
+                                                value={formData.dimensions || ''}
+                                                onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
+                                                className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                            </div>
+
+                            <div className="p-6 border-t border-[#14211A]/5 flex justify-end gap-3 sticky bottom-0 bg-white z-20">
+                                <button
+                                    onClick={() => setIsEditing(false)}
+                                    className="px-6 py-3 border border-[#14211A]/10 text-[#14211A] font-bold text-xs tracking-wider uppercase rounded-sm hover:bg-[#F8F9F8] transition-all"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleSave}
+                                    className="px-6 py-3 bg-[#14211A] text-white font-bold text-xs tracking-wider uppercase rounded-sm hover:bg-[#D4AF37] transition-all shadow-lg flex items-center gap-2"
+                                >
+                                    <Save className="w-4 h-4" />
+                                    Save {editType === 'blog' ? 'Blog' : 'Product'}
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </div >
     );
 }
