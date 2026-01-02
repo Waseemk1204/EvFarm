@@ -799,27 +799,22 @@ export function Admin() {
                         </p>
                     </div>
                 )}
-                )}
-
         </div>
-    )
+        </div >
+    );
 }
-                                            </div >
-    <div className="flex-1 space-y-4">
-        <p className="text-xs text-[#14211A]/60 leading-relaxed mb-4">
-            Upload a square image (symbol). This logo will be used in the Navbar, Footer, Admin, and Browser headers.
-        </p>
-        <input
-            type="file"
-            onChange={(e) => handleImageUpload(e, 'siteLogo')}
-            className="block w-full text-xs text-gray-500
+
+<input
+    type="file"
+    onChange={(e) => handleImageUpload(e, 'siteLogo')}
+    className="block w-full text-xs text-gray-500
                                                         file:mr-4 file:py-2 file:px-4
                                                         file:rounded-full file:border-0
                                                         file:text-xs file:font-semibold
                                                         file:bg-[#14211A] file:text-white
                                                         hover:file:bg-[#D4AF37] cursor-pointer"
-        />
-    </div>
+/>
+    </div >
                                         </div >
                                     </div >
                                 </div >
