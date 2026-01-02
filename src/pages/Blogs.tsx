@@ -6,6 +6,7 @@ import { Footer } from '../components/Footer';
 import { Blog } from '../types';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { SEO } from '../components/SEO';
+import { LoadingSpinner } from '../components/LoadingSpinner';
 
 export function Blogs() {
     const { content } = useSiteContent();
@@ -59,11 +60,7 @@ export function Blogs() {
                     </div>
 
                     {loading ? (
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {[1, 2, 3].map(i => (
-                                <div key={i} className="h-[400px] bg-[#F8F9F8] animate-pulse rounded-sm" />
-                            ))}
-                        </div>
+                        <LoadingSpinner message="Loading blogs" />
                     ) : blogs.length === 0 ? (
                         <div className="text-center py-24 bg-[#F8F9F8] rounded-sm">
                             <p className="text-[#14211A]/40 font-display text-2xl">No insights published yet.</p>
