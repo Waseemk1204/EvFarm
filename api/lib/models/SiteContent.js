@@ -80,4 +80,4 @@ siteContentSchema.statics.getContents = async function () {
     return content;
 };
 
-module.exports = mongoose.model('SiteContent', siteContentSchema);
+module.exports = mongoose.models.SiteContent || mongoose.model('SiteContent', siteContentSchema);

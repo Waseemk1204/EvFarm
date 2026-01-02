@@ -28,4 +28,4 @@ adminSettingsSchema.statics.updatePassword = async function (newPassword) {
     );
 };
 
-module.exports = mongoose.model('AdminSettings', adminSettingsSchema);
+module.exports = mongoose.models.AdminSettings || mongoose.model('AdminSettings', adminSettingsSchema);
