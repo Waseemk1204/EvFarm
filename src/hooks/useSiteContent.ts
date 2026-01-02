@@ -79,7 +79,7 @@ const defaultContent: SiteContent = {
     heroSubtitle: "Experience the pinnacle of electric mobility. Handcrafted brilliance meets sustainable innovation for India's most exclusive destinations.",
     heroCta1: 'EXPLORE THE FLEET',
     heroCta2: 'REQUEST PRIVATE CONSULTATION',
-    heroTagline: 'Elite Transport by EVFARM',
+    heroTagline: 'Choose Future, Choose Electric',
     // About Section
     aboutTagline: 'Heritage & Innovation',
     aboutTitle: 'Crafted with',
