@@ -15,7 +15,6 @@ export function GetQuote() {
         email: '',
         phone: '',
         city: '',
-        model: '',
         message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,7 +33,7 @@ export function GetQuote() {
 
             if (response.ok) {
                 setIsSubmitted(true);
-                setFormData({ name: '', email: '', phone: '', city: '', model: '', message: '' });
+                setFormData({ name: '', email: '', phone: '', city: '', message: '' });
             }
         } catch (error) {
             console.error('Failed to submit inquiry:', error);
@@ -176,22 +175,7 @@ export function GetQuote() {
                                 </div>
                             </div>
 
-                            <div className="mb-6">
-                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">
-                                    Model Interest
-                                </label>
-                                <select
-                                    value={formData.model}
-                                    onChange={(e) => setFormData({ ...formData, model: e.target.value })}
-                                    className="w-full px-5 py-4 bg-[#F8F9F8] border border-[#14211A]/5 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]/20 transition-all"
-                                >
-                                    <option value="">Select a model...</option>
-                                    <option value="Compact">Compact (2 Seater)</option>
-                                    <option value="Classic">Classic (4 Seater)</option>
-                                    <option value="Executive">Executive (6 Seater)</option>
-                                    <option value="Custom">Custom Configuration</option>
-                                </select>
-                            </div>
+
 
                             <div className="mb-8">
                                 <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">
