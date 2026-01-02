@@ -73,6 +73,7 @@ export function Admin() {
     const [siteContent, setSiteContent] = useState<any>(null);
     const [loading, setLoading] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [isSaving, setIsSaving] = useState(false);
 
     // Inquiry filter
     const [statusFilter, setStatusFilter] = useState<string>('all');
@@ -303,6 +304,7 @@ export function Admin() {
             }
         }
 
+        setIsSaving(true);
         try {
             const endpoint = editType === 'blog' ? 'blogs' : 'products';
             const method = formData._id ? 'PUT' : 'POST';
@@ -334,6 +336,8 @@ export function Admin() {
                 errorMessage = 'Please fill in all required fields correctly.';
             }
             showToast(errorMessage, 'error');
+        } finally {
+            setIsSaving(false);
         }
     };
 
@@ -1080,10 +1084,20 @@ export function Admin() {
                                 </button>
                                 <button
                                     onClick={handleSave}
-                                    className="px-6 py-3 bg-[#14211A] text-white font-bold text-xs tracking-wider uppercase rounded-sm hover:bg-[#D4AF37] transition-all shadow-lg flex items-center gap-2"
+                                    disabled={isSaving || uploading}
+                                    className={`px-6 py-3 bg-[#14211A] text-white font-bold text-xs tracking-wider uppercase rounded-sm transition-all shadow-lg flex items-center gap-2 ${isSaving || uploading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#D4AF37]'}`}
                                 >
-                                    <Save className="w-4 h-4" />
-                                    Save {editType === 'blog' ? 'Blog' : 'Product'}
+                                    {isSaving ? (
+                                        <>
+                                            <Loader2 className="w-4 h-4 animate-spin" />
+                                            Saving...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Save className="w-4 h-4" />
+                                            Save {editType === 'blog' ? 'Blog' : 'Product'}
+                                        </>
+                                    )}
                                 </button>
                             </div>
                         </motion.div>
