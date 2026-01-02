@@ -25,7 +25,7 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-8"
         >
           <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-[10px] font-bold tracking-[0.3em] uppercase text-[#D4AF37] leading-none">
@@ -34,9 +34,9 @@ export function Hero() {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-4xl md:text-7xl lg:text-9xl text-white mb-8 leading-[1.0] lg:leading-[0.9] tracking-tighter"
         >
           {content.heroTitle} <br />
@@ -44,18 +44,18 @@ export function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
         >
           {content.heroSubtitle}
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
         >
           <a href="#models" className="group relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-5 bg-[#D4AF37] text-[#14211A] font-bold rounded-sm transition-all duration-500 hover:bg-white overflow-hidden shadow-lg hover:shadow-xl">
