@@ -268,11 +268,7 @@ export function Admin() {
             if (response.ok) {
                 const data = await response.json();
                 const imageUrl = `${BASE_URL}${data.url}`;
-                if (activeTab === 'content') {
-                    setSiteContent({ ...siteContent, [fieldName]: imageUrl });
-                } else {
-                    setFormData({ ...formData, [fieldName]: imageUrl });
-                }
+                setFormData({ ...formData, [fieldName]: imageUrl });
             } else {
                 showToast('Upload failed', 'error');
             }
@@ -309,21 +305,7 @@ export function Admin() {
         }
     };
 
-    const handleSaveContent = async () => {
-        setLoading(true);
-        try {
-            await fetch(`${API_URL}/site-content`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(siteContent)
-            });
-            showToast('Site content updated successfully!', 'success');
-        } catch (err) {
-            console.error('Failed to save site content:', err);
-            showToast('Failed to save site content', 'error');
-        }
-        setLoading(false);
-    };
+
 
     const handleDelete = async (type: 'blog' | 'product', id: string) => {
         showConfirm(
