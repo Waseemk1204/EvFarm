@@ -282,8 +282,23 @@ export function Admin() {
                 return;
             }
         } else if (editType === 'product') {
-            if (!formData.name?.trim() || !formData.image) {
-                showToast('Please provide at least a Product Name and Image', 'error');
+            const requiredFields = [
+                { key: 'name', label: 'Name' },
+                { key: 'image', label: 'Image' },
+                { key: 'speed', label: 'Speed' },
+                { key: 'range', label: 'Range' },
+                { key: 'batteryCapacity', label: 'Battery Capacity' },
+                { key: 'motorPower', label: 'Motor Power' },
+                { key: 'chargingTime', label: 'Charging Time' },
+                { key: 'dimensions', label: 'Dimensions' },
+                { key: 'groundClearance', label: 'Ground Clearance' }
+            ];
+
+            const missingFields = requiredFields.filter(field => !formData[field.key]);
+
+            if (missingFields.length > 0) {
+                const missingLabels = missingFields.map(f => f.label).join(', ');
+                showToast(`Please fill in: ${missingLabels}`, 'error');
                 return;
             }
         }
@@ -313,7 +328,12 @@ export function Admin() {
             showToast(`${editType === 'blog' ? 'Blog' : 'Product'} saved successfully!`, 'success');
         } catch (err: any) {
             console.error('Save failed:', err);
-            showToast(err.message || 'Failed to save', 'error');
+            // Format Mongoose validation errors nicely
+            let errorMessage = err.message || 'Failed to save';
+            if (errorMessage.includes('Product validation failed')) {
+                errorMessage = 'Please fill in all required fields correctly.';
+            }
+            showToast(errorMessage, 'error');
         }
     };
 
@@ -998,14 +1018,13 @@ export function Admin() {
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
                                                 <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Battery Type</label>
-                                                <select
-                                                    value={formData.batteryType || 'Lithium-ion'}
+                                                <input
+                                                    type="text"
+                                                    value={formData.batteryType || ''}
                                                     onChange={(e) => setFormData({ ...formData, batteryType: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
-                                                >
-                                                    <option value="Lithium-ion">Lithium-ion</option>
-                                                    <option value="Lead-acid">Lead-acid</option>
-                                                </select>
+                                                    placeholder="e.g. Lithium-ion"
+                                                />
                                             </div>
                                             <div>
                                                 <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Battery Capacity</label>
