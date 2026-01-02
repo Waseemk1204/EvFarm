@@ -26,7 +26,7 @@ export function ProductCard({
                 <img
                     src={model.image}
                     alt={model.name}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
                 />
 
                 {/* Overlay Info */}
@@ -73,7 +73,7 @@ export function ProductCard({
                         <div className="w-8 h-8 rounded-full bg-[#F8F9F8] flex items-center justify-center shrink-0">
                             <Zap className="w-3.5 h-3.5 text-[#D4AF37]" />
                         </div>
-                        <span className="text-[10px] font-bold text-[#14211A] whitespace-nowrap">{model.speed}</span>
+                        <span className="text-[10px] font-bold text-[#14211A] whitespace-nowrap">{model.power}</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-[#F8F9F8] flex items-center justify-center shrink-0">

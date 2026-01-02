@@ -286,13 +286,14 @@ export function Admin() {
             const requiredFields = [
                 { key: 'name', label: 'Name' },
                 { key: 'image', label: 'Image' },
-                { key: 'speed', label: 'Speed' },
-                { key: 'range', label: 'Range' },
-                { key: 'batteryCapacity', label: 'Battery Capacity' },
-                { key: 'motorPower', label: 'Motor Power' },
+                { key: 'battery', label: 'Battery' },
                 { key: 'chargingTime', label: 'Charging Time' },
-                { key: 'dimensions', label: 'Dimensions' },
-                { key: 'groundClearance', label: 'Ground Clearance' }
+                { key: 'range', label: 'Range' },
+                { key: 'power', label: 'Power' },
+                { key: 'tires', label: 'Tires' },
+                { key: 'braking', label: 'Braking' },
+                { key: 'steering', label: 'Steering' },
+                { key: 'lights', label: 'Lights' }
             ];
 
             const missingFields = requiredFields.filter(field => !formData[field.key]);
@@ -1000,12 +1001,13 @@ export function Admin() {
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Speed</label>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Power</label>
                                                 <input
                                                     type="text"
-                                                    value={formData.speed || ''}
-                                                    onChange={(e) => setFormData({ ...formData, speed: e.target.value })}
+                                                    value={formData.power || ''}
+                                                    onChange={(e) => setFormData({ ...formData, power: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                    placeholder="e.g. 5KW peak power"
                                                 />
                                             </div>
                                             <div>
@@ -1015,6 +1017,7 @@ export function Admin() {
                                                     value={formData.range || ''}
                                                     onChange={(e) => setFormData({ ...formData, range: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                    placeholder="e.g. 50 km"
                                                 />
                                             </div>
                                             <div>
@@ -1024,60 +1027,65 @@ export function Admin() {
                                                     value={formData.chargingTime || ''}
                                                     onChange={(e) => setFormData({ ...formData, chargingTime: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                    placeholder="e.g. up-to 5 Hrs"
                                                 />
                                             </div>
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Battery Type</label>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Battery</label>
                                                 <input
                                                     type="text"
-                                                    value={formData.batteryType || ''}
-                                                    onChange={(e) => setFormData({ ...formData, batteryType: e.target.value })}
+                                                    value={formData.battery || ''}
+                                                    onChange={(e) => setFormData({ ...formData, battery: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
-                                                    placeholder="e.g. Lithium-ion"
+                                                    placeholder="e.g. Lithium Phosphate"
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Battery Capacity</label>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Tires</label>
                                                 <input
                                                     type="text"
-                                                    value={formData.batteryCapacity || ''}
-                                                    onChange={(e) => setFormData({ ...formData, batteryCapacity: e.target.value })}
+                                                    value={formData.tires || ''}
+                                                    onChange={(e) => setFormData({ ...formData, tires: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                    placeholder="e.g. 145/80-R12 Tubeless"
                                                 />
                                             </div>
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             <div>
-                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Motor Power</label>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Braking</label>
                                                 <input
                                                     type="text"
-                                                    value={formData.motorPower || ''}
-                                                    onChange={(e) => setFormData({ ...formData, motorPower: e.target.value })}
+                                                    value={formData.braking || ''}
+                                                    onChange={(e) => setFormData({ ...formData, braking: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                    placeholder="e.g. Hydraulic Drum"
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Ground Clearance</label>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Steering</label>
                                                 <input
                                                     type="text"
-                                                    value={formData.groundClearance || ''}
-                                                    onChange={(e) => setFormData({ ...formData, groundClearance: e.target.value })}
+                                                    value={formData.steering || ''}
+                                                    onChange={(e) => setFormData({ ...formData, steering: e.target.value })}
                                                     className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                    placeholder="e.g. RHD, Rack & Pinion"
                                                 />
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Dimensions</label>
+                                            <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Lights</label>
                                             <input
                                                 type="text"
-                                                value={formData.dimensions || ''}
-                                                onChange={(e) => setFormData({ ...formData, dimensions: e.target.value })}
+                                                value={formData.lights || ''}
+                                                onChange={(e) => setFormData({ ...formData, lights: e.target.value })}
                                                 className="w-full px-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                placeholder="e.g. Powerful LED"
                                             />
                                         </div>
                                     </>

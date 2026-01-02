@@ -77,11 +77,11 @@ export function ProductModal({ model, isOpen, onClose }: ProductModalProps) {
                                 {/* Core Performance */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <h4 className="text-[9px] font-bold tracking-widest uppercase text-[#14211A]/20 mb-1">Top Speed</h4>
-                                        <p className="text-xl font-display text-[#14211A]">{model.speed}</p>
+                                        <h4 className="text-[9px] font-bold tracking-widest uppercase text-[#14211A]/20 mb-1">Power</h4>
+                                        <p className="text-xl font-display text-[#14211A]">{model.power}</p>
                                     </div>
                                     <div>
-                                        <h4 className="text-[9px] font-bold tracking-widest uppercase text-[#14211A]/20 mb-1">Max Range</h4>
+                                        <h4 className="text-[9px] font-bold tracking-widest uppercase text-[#14211A]/20 mb-1">Range</h4>
                                         <p className="text-xl font-display text-[#14211A]">{model.range}</p>
                                     </div>
                                 </div>
@@ -91,16 +91,16 @@ export function ProductModal({ model, isOpen, onClose }: ProductModalProps) {
                                     <h4 className="text-[9px] font-bold tracking-widest uppercase text-[#14211A]/20 pb-2 border-b border-[#14211A]/5">Technical Specifications</h4>
                                     <div className="grid gap-2">
                                         {[
-                                            { label: 'Battery Type', value: model.batteryType },
-                                            { label: 'Capacity', value: model.batteryCapacity },
-                                            { label: 'Motor Power', value: model.motorPower },
+                                            { label: 'Battery', value: model.battery },
                                             { label: 'Charging', value: model.chargingTime },
-                                            { label: 'Dimensions', value: model.dimensions },
-                                            { label: 'Ground Clearance', value: model.groundClearance },
+                                            { label: 'Tires', value: model.tires },
+                                            { label: 'Braking', value: model.braking },
+                                            { label: 'Steering', value: model.steering },
+                                            { label: 'Lights', value: model.lights },
                                         ].map((spec) => (
                                             <div key={spec.label} className="flex justify-between items-center py-1">
                                                 <span className="text-xs text-[#14211A]/40">{spec.label}</span>
-                                                <span className="text-xs font-bold text-[#14211A]">{spec.value}</span>
+                                                <span className="text-xs font-bold text-[#14211A] text-right">{spec.value}</span>
                                             </div>
                                         ))}
                                     </div>
