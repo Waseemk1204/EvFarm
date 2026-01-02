@@ -54,9 +54,14 @@ export function ProductCard({
                     </h3>
                 </div>
 
-                <p className="text-sm text-[#14211A]/60 font-light mb-8 line-clamp-2">
+                <p className="text-sm text-[#14211A]/60 font-light mb-4 line-clamp-2">
                     {model.tagline}
                 </p>
+
+                <div className="mb-8">
+                    <span className="text-lg font-display font-medium text-[#14211A]">₹ {model.mrp}</span>
+                    <span className="text-[10px] text-[#14211A]/40 uppercase tracking-wider ml-2">Ex-Showroom</span>
+                </div>
 
                 {/* Minimal Specs */}
                 <div className="grid grid-cols-3 gap-4 py-6 border-y border-[#14211A]/5">

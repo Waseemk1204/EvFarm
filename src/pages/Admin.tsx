@@ -283,6 +283,7 @@ export function Admin() {
             const requiredFields = [
                 { key: 'name', label: 'Name' },
                 { key: 'image', label: 'Image' },
+                { key: 'mrp', label: 'MRP' },
                 { key: 'battery', label: 'Battery' },
                 { key: 'chargingTime', label: 'Charging Time' },
                 { key: 'range', label: 'Range' },
@@ -992,6 +993,19 @@ export function Admin() {
                                         </div>
 
                                         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                            <div>
+                                                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">MRP (₹)</label>
+                                                <div className="relative">
+                                                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-[#14211A]/40 text-sm">₹</span>
+                                                    <input
+                                                        type="text"
+                                                        value={formData.mrp || ''}
+                                                        onChange={(e) => setFormData({ ...formData, mrp: e.target.value })}
+                                                        className="w-full pl-8 pr-4 py-3 bg-[#F8F9F8] border border-[#14211A]/5 rounded-sm focus:outline-none focus:ring-1 focus:ring-[#14211A]/10"
+                                                        placeholder="e.g. 5,49,000"
+                                                    />
+                                                </div>
+                                            </div>
                                             <div>
                                                 <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#14211A]/40 mb-3">Seating</label>
                                                 <input

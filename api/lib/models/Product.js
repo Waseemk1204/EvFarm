@@ -5,6 +5,7 @@ const productSchema = new mongoose.Schema({
     seating: { type: Number, required: true },
     tagline: { type: String, required: true },
     image: { type: String, required: true },
+    mrp: { type: String, required: true },
     power: { type: String, required: true },
     range: { type: String, required: true },
     battery: { type: String, required: true },

@@ -60,10 +60,13 @@ export function ProductModal({ model, isOpen, onClose }: ProductModalProps) {
                         {/* Right: Specifications & Features */}
                         <div className="lg:w-1/2 p-6 lg:p-16 overflow-y-auto">
                             <div className="flex justify-between items-start mb-8">
-                                <div>
-                                    <span className="text-[9px] font-bold tracking-[0.4em] uppercase text-[#D4AF37] mb-2 block">Official Catalog</span>
-                                    <h2 className="font-display text-2xl lg:text-4xl font-medium text-[#14211A] tracking-tighter">{model.name}</h2>
-                                    <p className="text-[#14211A]/40 text-xs mt-1">{model.tagline}</p>
+                                <div className="mb-8">
+                                    <h3 className="font-display text-4xl font-medium text-[#14211A] mb-2">{model.name}</h3>
+                                    <p className="text-[#14211A]/60 text-lg font-light mb-4">{model.tagline}</p>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-2xl font-display font-medium text-[#14211A]">₹ {model.mrp}</span>
+                                        <span className="text-xs text-[#14211A]/40 uppercase tracking-wider">Ex-Showroom</span>
+                                    </div>
                                 </div>
                                 <button
                                     onClick={onClose}

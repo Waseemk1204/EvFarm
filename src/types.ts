@@ -14,6 +14,7 @@ export interface GolfCartModel {
     seating: number;
     tagline: string;
     image: string;
+    mrp: string;
     range: string;
     battery: string;
     power: string;
