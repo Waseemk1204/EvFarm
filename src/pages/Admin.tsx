@@ -249,27 +249,64 @@ export function Admin() {
         setIsEditing(true);
     };
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string = 'image') => {
+    const resizeImage = (file: File): Promise<string> => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = (event) => {
+                const img = new Image();
+                img.src = event.target?.result as string;
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+                    const MAX_WIDTH = 800;
+                    const MAX_HEIGHT = 800;
+
+                    if (width > height) {
+                        if (width > MAX_WIDTH) {
+                            height *= MAX_WIDTH / width;
+                            width = MAX_WIDTH;
+                        }
+                    } else {
+                        if (height > MAX_HEIGHT) {
+                            width *= MAX_HEIGHT / height;
+                            height = MAX_HEIGHT;
+                        }
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx?.drawImage(img, 0, 0, width, height);
+                    resolve(canvas.toDataURL('image/jpeg', 0.7)); // Compress to JPEG with 70% quality
+                };
+                img.onerror = (error) => reject(error);
+            };
+            reader.onerror = (error) => reject(error);
+        });
+    };
+
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, fieldName: string = 'image') => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        // Check file size (limit to 2MB for database storage)
-        if (file.size > 2 * 1024 * 1024) {
-            showToast('Image too large. Please use an image under 2MB.', 'error');
+        // Check file size (limit to 2MB for input filtering, though compression helps)
+        if (file.size > 5 * 1024 * 1024) {
+            showToast('Image too large. Please use an image under 5MB.', 'error');
             return;
         }
 
         setUploading(true);
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setFormData({ ...formData, [fieldName]: reader.result as string });
-            setUploading(false);
-        };
-        reader.onerror = () => {
+        try {
+            const compressedImage = await resizeImage(file);
+            setFormData({ ...formData, [fieldName]: compressedImage });
+        } catch (err) {
+            console.error('Image processing failed:', err);
             showToast('Failed to process image', 'error');
+        } finally {
             setUploading(false);
-        };
-        reader.readAsDataURL(file);
+        }
     };
 
     const handleSave = async () => {
