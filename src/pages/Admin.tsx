@@ -275,6 +275,19 @@ export function Admin() {
     };
 
     const handleSave = async () => {
+        // Validation
+        if (editType === 'blog') {
+            if (!formData.title?.trim() || !formData.content?.trim()) {
+                showToast('Please fill in all required fields (Title, Content)', 'error');
+                return;
+            }
+        } else if (editType === 'product') {
+            if (!formData.name?.trim() || !formData.image) {
+                showToast('Please provide at least a Product Name and Image', 'error');
+                return;
+            }
+        }
+
         try {
             const endpoint = editType === 'blog' ? 'blogs' : 'products';
             const method = formData._id ? 'PUT' : 'POST';
@@ -283,19 +296,24 @@ export function Admin() {
             // For blogs, always set isPublished to true
             const dataToSave = editType === 'blog' ? { ...formData, isPublished: true } : formData;
 
-            await fetch(url, {
+            const response = await fetch(url, {
                 method,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(dataToSave)
             });
 
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to save');
+            }
+
             fetchData();
             setIsEditing(false);
             setEditType(null);
             showToast(`${editType === 'blog' ? 'Blog' : 'Product'} saved successfully!`, 'success');
-        } catch (err) {
+        } catch (err: any) {
             console.error('Save failed:', err);
-            showToast('Failed to save', 'error');
+            showToast(err.message || 'Failed to save', 'error');
         }
     };
 
