@@ -176,6 +176,32 @@ export function Admin() {
         }
     }, [isAuthenticated]);
 
+    // Auto-refresh data every 2 seconds for Dashboard and Inquiries
+    useEffect(() => {
+        if (!isAuthenticated) return;
+
+        let intervalId: NodeJS.Timeout;
+
+        if (activeTab === 'dashboard' || activeTab === 'inquiries') {
+            intervalId = setInterval(() => {
+                // Only fetch inquiries if on inquiries tab to save bandwidth
+                // But fetch all if on dashboard for stats
+                if (activeTab === 'dashboard') {
+                    fetchData();
+                } else if (activeTab === 'inquiries') {
+                    fetch(`${API_URL}/inquiries`)
+                        .then(res => res.json())
+                        .then(data => setInquiries(data))
+                        .catch(err => console.error('Auto-refresh error:', err));
+                }
+            }, 2000);
+        }
+
+        return () => {
+            if (intervalId) clearInterval(intervalId);
+        };
+    }, [isAuthenticated, activeTab]);
+
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
 
