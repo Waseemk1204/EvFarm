@@ -26,7 +26,7 @@ export function ProductCard({
                 <img
                     src={model.image}
                     alt={model.name}
-                    className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
 
                 {/* Overlay Info */}

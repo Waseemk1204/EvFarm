@@ -961,7 +961,7 @@ export function Admin() {
                                                         <img
                                                             src={formData.image}
                                                             alt="Preview"
-                                                            className="w-16 h-16 rounded-sm bg-[#F8F9F8] border border-[#14211A]/5 object-contain"
+                                                            className="w-16 h-16 object-cover rounded-sm bg-[#F8F9F8]"
                                                         />
                                                         <button
                                                             onClick={() => setFormData({ ...formData, image: '' })}
