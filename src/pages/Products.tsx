@@ -8,7 +8,6 @@ import { ProductModal } from '../components/ProductModal';
 import { GolfCartModel } from '../types';
 import { useSiteContent } from '../hooks/useSiteContent';
 import { SEO } from '../components/SEO';
-import { SEO } from '../components/SEO';
 
 export function Products() {
     const { content } = useSiteContent();
