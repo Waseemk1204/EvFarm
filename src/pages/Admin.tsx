@@ -542,7 +542,7 @@ export function Admin() {
                             { id: 'inquiries', icon: MessageSquare, label: 'Inquiries', badge: inquiries.filter(i => i.status === 'new').length },
                             { id: 'blogs', icon: FileText, label: 'Blogs' },
                             { id: 'products', icon: Package, label: 'Products' },
-                            { id: 'products', icon: Package, label: 'Products' },
+
                         ].map((item) => (
                             <button
                                 key={item.id}
