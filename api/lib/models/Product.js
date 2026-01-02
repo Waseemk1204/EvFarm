@@ -5,7 +5,6 @@ const productSchema = new mongoose.Schema({
     seating: { type: Number, required: true },
     tagline: { type: String, required: true },
     image: { type: String, required: true },
-    imageFit: { type: String, enum: ['contain', 'cover'], default: 'contain' },
     power: { type: String, required: true },
     range: { type: String, required: true },
     battery: { type: String, required: true },

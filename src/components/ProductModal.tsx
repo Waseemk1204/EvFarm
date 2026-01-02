@@ -45,7 +45,7 @@ export function ProductModal({ model, isOpen, onClose }: ProductModalProps) {
                             <img
                                 src={model.image}
                                 alt={model.name}
-                                className={`w-full h-full ${model.imageFit === 'cover' ? 'object-cover' : 'object-contain'} p-4`}
+                                className="w-full h-full object-contain p-4"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-[#14211A]/20 to-transparent" />
 
