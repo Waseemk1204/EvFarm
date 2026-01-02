@@ -65,7 +65,7 @@ export function ProductModal({ model, isOpen, onClose }: ProductModalProps) {
                                     <p className="text-[#14211A]/60 text-lg font-light mb-4">{model.tagline}</p>
                                     <div className="flex items-baseline gap-2">
                                         <span className="text-2xl font-display font-medium text-[#14211A]">₹ {model.mrp}</span>
-                                        <span className="text-xs text-[#14211A]/40 uppercase tracking-wider">Ex-Showroom</span>
+                                        <span className="text-[10px] text-[#14211A]/40 uppercase tracking-wider">+ Transport & 5% GST</span>
                                     </div>
                                 </div>
                                 <button

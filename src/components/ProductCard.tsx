@@ -60,7 +60,7 @@ export function ProductCard({
 
                 <div className="mb-8">
                     <span className="text-lg font-display font-medium text-[#14211A]">₹ {model.mrp}</span>
-                    <span className="text-[10px] text-[#14211A]/40 uppercase tracking-wider ml-2">Ex-Showroom</span>
+                    <span className="text-[9px] text-[#14211A]/40 uppercase tracking-wider ml-2">+ Transport & 5% GST</span>
                 </div>
 
                 {/* Minimal Specs */}
