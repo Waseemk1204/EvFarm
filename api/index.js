@@ -53,10 +53,13 @@ export default async function handler(req, res) {
     await connectDB();
 
     const { method } = req;
-    const pathArray = req.query.path || [];
-    const resource = pathArray[0] || '';
-    const id = pathArray[1] || '';
-    const action = pathArray[2] || '';
+
+    // Parse path from URL: /api/products/123 -> ['products', '123']
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const pathParts = url.pathname.replace(/^\/api\//, '').split('/').filter(Boolean);
+    const resource = pathParts[0] || '';
+    const id = pathParts[1] || '';
+    const action = pathParts[2] || '';
 
     try {
         // ============ PRODUCTS ============
