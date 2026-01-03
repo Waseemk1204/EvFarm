@@ -16,7 +16,7 @@ export function Navbar() {
             <div className="glass-card rounded-full px-6 py-3 md:px-8 md:py-4 flex items-center justify-between shadow-2xl">
                 <Link to="/" className="flex items-center gap-2 md:gap-3 hover:opacity-80 transition-opacity">
                     <img src="/navbar-logo.png" alt="EVFARM" className="h-10 w-10 md:h-14 md:w-14 object-contain rounded-full overflow-hidden" />
-                    <span className="font-display text-lg md:text-xl font-bold tracking-wide text-[#14211A]">EV Farm</span>
+                    <span className="font-display text-lg md:text-xl font-bold tracking-wide text-[#14211A]">EVFARM</span>
                 </Link>
 
                 <div className="hidden md:flex items-center gap-10">

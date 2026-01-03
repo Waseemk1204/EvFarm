@@ -587,7 +587,7 @@ export function Admin() {
                 <div className="p-8">
                     <div className="flex items-center gap-3 mb-12">
                         <img src={siteContent?.siteLogo || "/logo.png"} alt="EVFARM" className="h-16 w-16 object-contain rounded-full overflow-hidden" />
-                        <span className="font-display text-xl font-bold tracking-wide text-white">EV Farm</span>
+                        <span className="font-display text-xl font-bold tracking-wide text-white">EVFARM</span>
                     </div>
 
                     <nav className="space-y-2">
