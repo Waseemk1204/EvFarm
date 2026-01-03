@@ -76,7 +76,7 @@ export interface SiteContent {
 const defaultContent: SiteContent = {
     heroTitle: 'Redefining',
     heroTitleHighlight: 'Luxury',
-    heroSubtitle: "Experience the pinnacle of electric mobility. Handcrafted brilliance meets sustainable innovation for India's most exclusive destinations.",
+    heroSubtitle: "Experience the pinnacle of electric mobility. Handcrafted golf cart and club car brilliance meets sustainable innovation for India's most exclusive destinations.",
     heroCta1: 'EXPLORE THE FLEET',
     heroCta2: 'REQUEST PRIVATE CONSULTATION',
     heroTagline: 'Choose Future, Choose Electric',
@@ -84,7 +84,7 @@ const defaultContent: SiteContent = {
     aboutTagline: 'Heritage & Innovation',
     aboutTitle: 'Crafted with',
     aboutTitleHighlight: 'Excellence',
-    aboutDescription: 'EVFARM is an ISO-certified manufacturer of electric vehicles, specializing in electric golf carts and battery-based mobility solutions for institutional and commercial applications. With a focus on quality, customization, and reliability, we deliver efficient electric mobility solutions tailored to Indian operating conditions.',
+    aboutDescription: 'EVFARM is an ISO-certified manufacturer of electric vehicles, specializing in premium electric golf carts, club cars, and electric buggies for institutional and commercial applications. With a focus on quality, customization, and reliability, we deliver efficient electric mobility solutions tailored to Indian operating conditions.',
     aboutStat1Value: '10+',
     aboutStat1Label: 'Years Exp',
     aboutStat2Value: '5k+',
