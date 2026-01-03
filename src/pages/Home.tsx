@@ -182,46 +182,87 @@ export function Home() {
                 </div>
             </section>
 
-            {/* Benefits Section */}
-            <section id="benefits" className="section-padding bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-16">
-                        {benefits.map((benefit) => (
-                            <div key={benefit.title} className="group p-4 md:p-6 bg-[#F8F9F8] rounded-xl lg:bg-transparent lg:p-0 transition-colors hover:bg-white hover:shadow-lg lg:hover:shadow-none lg:hover:bg-transparent text-center lg:text-left">
-                                <div className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full bg-[#14211A]/5 flex items-center justify-center text-[#14211A] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-500 mb-3 lg:mb-8 mx-auto lg:mx-0">{benefit.icon}</div>
-                                <h4 className="font-display text-sm md:text-lg lg:text-2xl font-medium text-[#14211A] mb-1 lg:mb-4">{benefit.title}</h4>
-                                <p className="text-[#14211A]/50 text-[10px] md:text-sm leading-relaxed hidden md:block">{benefit.desc}</p>
-                                <p className="text-[#14211A]/50 text-[10px] leading-relaxed md:hidden line-clamp-3">{benefit.desc}</p>
+            {/* Mission & Vision Section */}
+            <section className="section-padding bg-white relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+                    <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,_#D4AF37_0%,_transparent_50%)]" />
+                </div>
+                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
+                        {/* Mission */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="relative group"
+                        >
+                            <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block text-[#D4AF37]">Our Mission</span>
+                            <h3 className="font-display text-4xl lg:text-6xl font-medium mb-6 text-[#14211A]">Sustainable <span className="italic text-gradient-gold">Mobility</span></h3>
+                            <p className="text-[#14211A]/60 text-lg leading-relaxed font-light">
+                                To revolutionize short-distance transportation by engineering premium electric vehicles that blend luxury with sustainability. We strive to reduce carbon footprints in gated communities, resorts, and campuses while delivering an uncompromised driving experience.
+                            </p>
+                            <div className="absolute -left-6 top-0 w-1 h-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+                        </motion.div>
+
+                        {/* Vision */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="relative group lg:text-right"
+                        >
+                            <div className="flex flex-col items-start lg:items-end">
+                                <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block text-[#D4AF37]">Our Vision</span>
+                                <h3 className="font-display text-4xl lg:text-6xl font-medium mb-6 text-[#14211A]">Global <span className="italic text-gradient-gold">Leadership</span></h3>
+                                <p className="text-[#14211A]/60 text-lg leading-relaxed font-light">
+                                    To become the global benchmark for electric utility vehicles, setting new standards in design, efficiency, and reliability. We envision a future where silent, clean, and efficient mobility is the norm for every institutional and leisure environment across India and beyond.
+                                </p>
                             </div>
-                        ))}
-                    </div>
-                    <div className="mt-8 lg:mt-40 grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 p-2 lg:p-4 bg-[#F8F9F8] rounded-xl lg:rounded-3xl border border-[#14211A]/5 shadow-inner">
-                        {useCases.map((useCase) => (
-                            <div key={useCase.label} className="bg-white rounded-lg lg:rounded-2xl p-3 lg:p-10 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all duration-700 hover:-translate-y-1">
-                                <div className="text-[#D4AF37] mb-2 lg:mb-6 scale-75 lg:scale-100">{useCase.icon}</div>
-                                <span className="text-[8px] lg:text-[10px] font-bold tracking-widest uppercase text-[#14211A]/60">{useCase.label}</span>
-                            </div>
-                        ))}
+                            <div className="absolute -right-6 top-0 w-1 h-full bg-[#14211A] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
+                        </motion.div>
                     </div>
                 </div>
-            </section>
 
-            <BlogsSection />
-
-            {/* Contact Section */}
-            <section id="contact" className="section-padding bg-[#14211A] overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
-                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
-                    <div className="max-w-3xl mx-auto">
-                        <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-8 block text-[#D4AF37]">Reserve Your Experience</span>
-                        <h2 className="font-display text-4xl lg:text-8xl text-white mb-10 tracking-tighter leading-[1.1] lg:leading-[0.85]">{content.contactTitle} <br /><span className="italic text-gradient-gold">{content.contactTitleHighlight}</span></h2>
-                        <div className="bg-white/5 backdrop-blur-3xl border border-white/10 p-6 lg:p-12 rounded-2xl shadow-2xl"><QuoteForm /></div>
+                {/* Benefits Section */}
+                <section id="benefits" className="section-padding bg-white">
+                    <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-16">
+                            {benefits.map((benefit) => (
+                                <div key={benefit.title} className="group p-4 md:p-6 bg-[#F8F9F8] rounded-xl lg:bg-transparent lg:p-0 transition-colors hover:bg-white hover:shadow-lg lg:hover:shadow-none lg:hover:bg-transparent text-center lg:text-left">
+                                    <div className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full bg-[#14211A]/5 flex items-center justify-center text-[#14211A] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-500 mb-3 lg:mb-8 mx-auto lg:mx-0">{benefit.icon}</div>
+                                    <h4 className="font-display text-sm md:text-lg lg:text-2xl font-medium text-[#14211A] mb-1 lg:mb-4">{benefit.title}</h4>
+                                    <p className="text-[#14211A]/50 text-[10px] md:text-sm leading-relaxed hidden md:block">{benefit.desc}</p>
+                                    <p className="text-[#14211A]/50 text-[10px] leading-relaxed md:hidden line-clamp-3">{benefit.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <div className="mt-8 lg:mt-40 grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 p-2 lg:p-4 bg-[#F8F9F8] rounded-xl lg:rounded-3xl border border-[#14211A]/5 shadow-inner">
+                            {useCases.map((useCase) => (
+                                <div key={useCase.label} className="bg-white rounded-lg lg:rounded-2xl p-3 lg:p-10 flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-all duration-700 hover:-translate-y-1">
+                                    <div className="text-[#D4AF37] mb-2 lg:mb-6 scale-75 lg:scale-100">{useCase.icon}</div>
+                                    <span className="text-[8px] lg:text-[10px] font-bold tracking-widest uppercase text-[#14211A]/60">{useCase.label}</span>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <ProductModal model={selectedModel} isOpen={isModalOpen} onClose={handleCloseModal} />
+                <BlogsSection />
+
+                {/* Contact Section */}
+                <section id="contact" className="section-padding bg-[#14211A] overflow-hidden relative">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#D4AF37]/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl" />
+                    <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center">
+                        <div className="max-w-3xl mx-auto">
+                            <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-8 block text-[#D4AF37]">Reserve Your Experience</span>
+                            <h2 className="font-display text-4xl lg:text-8xl text-white mb-10 tracking-tighter leading-[1.1] lg:leading-[0.85]">{content.contactTitle} <br /><span className="italic text-gradient-gold">{content.contactTitleHighlight}</span></h2>
+                            <div className="bg-white/5 backdrop-blur-3xl border border-white/10 p-6 lg:p-12 rounded-2xl shadow-2xl"><QuoteForm /></div>
+                        </div>
+                    </div>
+                </section>
+
+                <ProductModal model={selectedModel} isOpen={isModalOpen} onClose={handleCloseModal} />
         </Layout>
     );
 }
