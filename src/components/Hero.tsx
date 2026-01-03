@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { useSiteContent } from '../hooks/useSiteContent';
 
@@ -22,35 +22,47 @@ export function Hero() {
 
       {/* Hero Content */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-12 text-center">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8"
-        >
-          <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-[10px] font-bold tracking-[0.3em] uppercase text-[#D4AF37] leading-none">
-            {content.heroTagline}
-          </span>
-        </motion.div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={content.heroTagline}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mb-8"
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-[10px] font-bold tracking-[0.3em] uppercase text-[#D4AF37] leading-none">
+              {content.heroTagline}
+            </span>
+          </motion.div>
+        </AnimatePresence>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-4xl md:text-7xl lg:text-9xl text-white mb-8 leading-[1.0] lg:leading-[0.9] tracking-tighter"
-        >
-          {content.heroTitle} <br />
-          <span className="text-gradient-gold italic font-medium">{content.heroTitleHighlight}</span>
-        </motion.h1>
+        <AnimatePresence mode="wait">
+          <motion.h1
+            key={content.heroTitle + content.heroTitleHighlight}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-4xl md:text-7xl lg:text-9xl text-white mb-8 leading-[1.0] lg:leading-[0.9] tracking-tighter"
+          >
+            {content.heroTitle} <br />
+            <span className="text-gradient-gold italic font-medium">{content.heroTitleHighlight}</span>
+          </motion.h1>
+        </AnimatePresence>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
-        >
-          {content.heroSubtitle}
-        </motion.p>
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={content.heroSubtitle}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
+          >
+            {content.heroSubtitle}
+          </motion.p>
+        </AnimatePresence>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
