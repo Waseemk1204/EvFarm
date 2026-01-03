@@ -179,6 +179,18 @@ export function Home() {
                             <ProductCard key={model._id || model.id} model={model} index={index} onViewDetails={handleViewDetails} />
                         ))}
                     </div>
+
+                    <div className="mt-16 text-center">
+                        <Link
+                            to="/products"
+                            className="inline-flex items-center gap-4 text-[11px] font-bold tracking-[0.3em] uppercase text-[#14211A] hover:text-[#D4AF37] transition-all group"
+                        >
+                            View All Products
+                            <div className="w-10 h-10 rounded-full border border-[#14211A]/10 flex items-center justify-center group-hover:border-[#D4AF37] transition-all">
+                                <ArrowRightIcon className="w-4 h-4" />
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </section>
 
