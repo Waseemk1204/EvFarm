@@ -197,9 +197,9 @@ export function Home() {
                             className="relative group"
                         >
                             <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block text-[#D4AF37]">Our Mission</span>
-                            <h3 className="font-display text-4xl lg:text-6xl font-medium mb-6 text-[#14211A]">Sustainable <span className="italic text-gradient-gold">Mobility</span></h3>
+                            <h3 className="font-display text-4xl lg:text-6xl font-medium mb-6 text-[#14211A]">Unmatched <span className="italic text-gradient-gold">Value</span></h3>
                             <p className="text-[#14211A]/60 text-lg leading-relaxed font-light">
-                                To revolutionize short-distance transportation by engineering premium electric vehicles that blend luxury with sustainability. We strive to reduce carbon footprints in gated communities, resorts, and campuses while delivering an uncompromised driving experience.
+                                To give best PRICE, QUALITY DELIVERY & SERVICES to customer.
                             </p>
                             <div className="absolute -left-6 top-0 w-1 h-full bg-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
                         </motion.div>
@@ -213,9 +213,9 @@ export function Home() {
                         >
                             <div className="flex flex-col items-start lg:items-end">
                                 <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block text-[#D4AF37]">Our Vision</span>
-                                <h3 className="font-display text-4xl lg:text-6xl font-medium mb-6 text-[#14211A]">Global <span className="italic text-gradient-gold">Leadership</span></h3>
+                                <h3 className="font-display text-4xl lg:text-6xl font-medium mb-6 text-[#14211A]">Customer <span className="italic text-gradient-gold">Satisfaction</span></h3>
                                 <p className="text-[#14211A]/60 text-lg leading-relaxed font-light">
-                                    To become the global benchmark for electric utility vehicles, setting new standards in design, efficiency, and reliability. We envision a future where silent, clean, and efficient mobility is the norm for every institutional and leisure environment across India and beyond.
+                                    To give best PRICE, QUALITY DELIVERY & SERVICES to customer.
                                 </p>
                             </div>
                             <div className="absolute -right-6 top-0 w-1 h-full bg-[#14211A] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
