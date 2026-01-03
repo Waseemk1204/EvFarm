@@ -16,8 +16,8 @@ interface SEOProps {
 
 const defaultSEO = {
     siteName: 'EVFARM India',
-    title: 'EVFARM India | Premium Electric Golf Carts & Utility Vehicles',
-    description: "Buy premium electric golf carts, club cars & buggies from EVFARM. Experience zero-emission luxury tailored for resorts, hotels & gated communities in India.",
+    title: 'EVFARM India | Electric Golfcarts, Club Cars & Buggies',
+    description: "Buy premium Electric Golfcarts, Club Cars & Buggies from EVFARM. Zero-emission luxury vehicles for resorts, hotels & gated communities in India.",
     keywords: 'electric golf carts, Golfcart, Electric buggy, Club Car, EV golf carts, luxury golf carts India, electric utility vehicles, EVFARM, sustainable mobility',
     image: 'https://evfarm.in/og-image.png',
     url: 'https://evfarm.in',
