@@ -151,7 +151,16 @@ export function Home() {
                         <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 1 }}>
                             <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block text-[#D4AF37]">{content.aboutTagline}</span>
                             <h2 className="font-display text-4xl lg:text-8xl font-medium mb-8 leading-[1.1] lg:leading-[0.85] tracking-tighter text-[#14211A]">{content.aboutTitle} <br /><span className="text-gradient-forest italic">{content.aboutTitleHighlight}</span></h2>
-                            <p className="text-[#14211A]/60 text-base lg:text-lg leading-relaxed mb-12 font-light">{content.aboutDescription}</p>
+                            <p className="text-[#14211A]/60 text-base lg:text-lg leading-relaxed mb-8 font-light">{content.aboutDescription}</p>
+
+                            <div className="flex items-center gap-6 mb-12 border-l-2 border-[#D4AF37] pl-6">
+                                <a href="https://www.iso.org" target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#14211A]/60 hover:text-[#D4AF37] transition-colors">
+                                    ISO Certified
+                                </a>
+                                <Link to="/products" className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#14211A]/60 hover:text-[#D4AF37] transition-colors">
+                                    Explore Fleet
+                                </Link>
+                            </div>
                             <div className="grid grid-cols-2 gap-8">
                                 <div><h4 className="text-3xl font-display text-[#14211A] mb-2">{content.aboutStat1Value}</h4><p className="text-[10px] font-bold tracking-widest uppercase text-[#14211A]/40">{content.aboutStat1Label}</p></div>
                                 <div><h4 className="text-3xl font-display text-[#14211A] mb-2">{content.aboutStat2Value}</h4><p className="text-[10px] font-bold tracking-widest uppercase text-[#14211A]/40">{content.aboutStat2Label}</p></div>
@@ -226,9 +235,12 @@ export function Home() {
                             <div className="flex flex-col items-start lg:items-end">
                                 <span className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block text-[#D4AF37]">Our Vision</span>
                                 <h3 className="font-display text-4xl lg:text-6xl font-medium mb-6 text-[#14211A]">Sustainable <span className="italic text-gradient-gold">Future</span></h3>
-                                <p className="text-[#14211A]/60 text-lg leading-relaxed font-light">
+                                <p className="text-[#14211A]/60 text-lg leading-relaxed font-light mb-6">
                                     We only have one world, we have to protect it, EVFARM wants to work together with everyone to build up a clean, green and beautiful world.
                                 </p>
+                                <a href="https://e-amrit.niti.gov.in/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase text-[#D4AF37] hover:opacity-80 transition-opacity">
+                                    Supporting Green India <ArrowRightIcon className="w-3 h-3" />
+                                </a>
                             </div>
                             <div className="absolute -right-6 top-0 w-1 h-full bg-[#14211A] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
                         </motion.div>
