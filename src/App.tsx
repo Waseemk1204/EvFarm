@@ -5,6 +5,7 @@ import { Blogs } from './pages/Blogs';
 import { BlogPost } from './pages/BlogPost';
 import { Products } from './pages/Products';
 import { GetQuote } from './pages/GetQuote';
+import { NotFound } from './pages/NotFound';
 import { ScrollToTop } from './components/ScrollToTop';
 
 export function App() {
@@ -18,6 +19,7 @@ export function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/blogs/:id" element={<BlogPost />} />
         <Route path="/admin/*" element={<Admin />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
