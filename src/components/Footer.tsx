@@ -20,6 +20,7 @@ export function Footer() {
                     <div className="lg:col-span-2">
                         <div className="flex items-center gap-3 mb-6 lg:mb-8">
                             <Link to="/" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
+                                <img src={content.siteLogo} alt="EVFARM" className="h-16 w-16 lg:h-24 lg:w-24 object-contain rounded-full overflow-hidden" />
                                 <span className="font-display text-2xl lg:text-3xl font-bold tracking-wide text-white">EVFARM</span>
                             </Link>
                         </div>
